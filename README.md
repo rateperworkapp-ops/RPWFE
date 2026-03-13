@@ -5,7 +5,7 @@
    ```bash
    npm install
    ```
-2. Create an environment file from the example:
+2. Create a local environment file from the example:
    ```bash
    copy .env.example .env
    ```
@@ -19,10 +19,19 @@
    ```
 
 ## Env
-Use `VITE_API_BASE_URL` in `.env`:
+Local development uses `VITE_API_BASE_URL` from `.env`:
 ```env
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
+
+Production builds use `.env.production` by default:
+```env
+VITE_API_BASE_URL=https://rpwbe.onrender.com/api
+```
+
+## Vercel Env
+This frontend reads the backend base URL from `VITE_API_BASE_URL` at build time.
+On Vercel, set `VITE_API_BASE_URL` in Project Settings -> Environment Variables if you want to override `.env.production`, then redeploy the project.
 
 ## Run Commands
 - Development: `npm run dev`
@@ -30,8 +39,10 @@ VITE_API_BASE_URL=http://localhost:5000/api
 - Preview build: `npm run preview`
 
 ## Backend API Base URL Setup
-This frontend uses `VITE_API_BASE_URL` for Axios base URL. If not provided, it falls back to:
-`http://localhost:5000/api`
+This frontend uses `VITE_API_BASE_URL` for Axios base URL.
+Fallbacks:
+- Development fallback: `http://localhost:5000/api`
+- Production fallback: `https://rpwbe.onrender.com/api`
 
 ## Page Overview
 - `/register`: manager registration page.
