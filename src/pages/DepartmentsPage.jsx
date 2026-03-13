@@ -21,6 +21,7 @@ function DepartmentsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDepartment, setEditingDepartment] = useState(null);
   const [saving, setSaving] = useState(false);
+  
 
   const loadDepartments = async () => {
     try {
